@@ -73,7 +73,9 @@ const LoansTable = () => {
                 viewDetails={() => viewDetails(record)}
                 updateRecord={() => updateRecord(record)}
                 deleteId={deleteId}
-                deleteRecord={(id, record) => deleteRecord(id, record)}
+                deleteRecord={(id: any, record: any) =>
+                  deleteRecord(id, record)
+                }
               />
             </div>
           </div>

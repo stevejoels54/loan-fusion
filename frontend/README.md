@@ -1,50 +1,130 @@
-# React + TypeScript + Vite
+# Frontend Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a frontend project built with **React** and **Vite**, using **TypeScript** for type safety. It leverages popular UI libraries like **Ant Design**, **Bootstrap**, and **Zustand** for state management.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## **Table of Contents**
 
-## Expanding the ESLint configuration
+- [Prerequisites](#prerequisites)
+- [Environment Setup](#environment-setup)
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [Building for Production](#building-for-production)
+- [Linting](#linting)
+- [Previewing the Production Build](#previewing-the-production-build)
+- [Available Scripts](#available-scripts)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## **Prerequisites**
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+Make sure the following tools are installed on your machine:
+
+- **Node.js**: v18+
+- **npm**: v9+
+
+---
+
+## **Environment Setup**
+
+1. Create a `.env` file in the root directory based on the `.env.example` file.
+
+Example `.env`:
+
+```ini
+VITE_API_BASE_URL=http://localhost:3000/api/loans
+VITE_APP_BASE_URL=http://localhost:5173/assets
+VITE_PRIMARY_COLOR="#FFAF00"
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. Ensure the backend service is up and running on port **3000** (or the one specified in `VITE_API_BASE_URL`).
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+---
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## **Installation**
+
+1. Clone the repository:
+
+   ```bash
+   git clone <your-repo-url>
+   cd frontend
+   ```
+
+2. Install the dependencies:
+   ```bash
+   npm install
+   ```
+
+---
+
+## **Running the Application**
+
+Start the development server:
+
+```bash
+npm run dev
 ```
+
+The application will run on [http://localhost:5173](http://localhost:5173). Any changes in the code will automatically reload the browser.
+
+---
+
+## **Building for Production**
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+The build output will be available in the `dist/` directory.
+
+---
+
+## **Linting**
+
+To run **ESLint** and check for code issues:
+
+```bash
+npm run lint
+```
+
+---
+
+## **Previewing the Production Build**
+
+To preview the production build locally:
+
+```bash
+npm run preview
+```
+
+The preview server will run on [http://localhost:4173](http://localhost:4173) by default.
+
+---
+
+## **Available Scripts**
+
+- **`npm run dev`**: Start the development server
+- **`npm run build`**: Build the project for production
+- **`npm run lint`**: Run ESLint to check for code issues
+- **`npm run preview`**: Preview the production build locally
+
+---
+
+## **License**
+
+This project is licensed under the ISC License.
+
+---
+
+## **Contributing**
+
+Feel free to open issues or submit pull requests for bug fixes or new features.
+
+---
+
+## **Author**
+
+Joel Steven Ssekyewa
