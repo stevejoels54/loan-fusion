@@ -19,7 +19,7 @@ const SideBar = () => {
           height: "100vh",
         }}
         theme="light"
-        className="d-none bg-white d-md-block border-end"
+        className="bg-white border-end sidebar"
       >
         <div className="demo-logo-vertical" />
         <AppMenu />

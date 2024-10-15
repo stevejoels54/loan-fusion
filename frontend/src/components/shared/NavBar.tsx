@@ -1,6 +1,7 @@
 import { Avatar, Col, Flex, Popover, Row, Button } from "antd";
 import { AiOutlineDown, AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
 import { useAppStore } from "../../config/stores";
+import { PRIMARY_COLOR } from "../../config/constants";
 
 const NavBar = () => {
   const appStore = useAppStore();
@@ -13,9 +14,8 @@ const NavBar = () => {
     <div
       style={{
         height: 45,
-        // backgroundColor: "#001529",
+        backgroundColor: PRIMARY_COLOR || "#1677FF",
       }}
-      className="bg-dark"
     >
       <Row>
         <Col span={12}>
@@ -32,7 +32,14 @@ const NavBar = () => {
               type="link"
               className="d-md-none"
               onClick={openDrawer}
-              icon={<AiOutlineMenu />}
+              icon={
+                <AiOutlineMenu
+                  style={{
+                    color: "white",
+                    fontSize: 20,
+                  }}
+                />
+              }
             ></Button>
             <p className="text-white text-md mb-0 text-uppercase fw-bold d-none d-md-block">
               LOAN FUSION
@@ -62,8 +69,18 @@ const NavBar = () => {
               placement="bottomRight"
               trigger="click"
             >
-              <Avatar size="default" icon={<AiOutlineUser />} />
-              <AiOutlineDown className="text-dark" />
+              <Avatar
+                size="default"
+                className="cursor-pointer"
+                icon={<AiOutlineUser />}
+              />
+              <AiOutlineDown
+                style={{
+                  color: "white",
+                  fontSize: 15,
+                  cursor: "pointer",
+                }}
+              />
             </Popover>
           </Flex>
         </Col>

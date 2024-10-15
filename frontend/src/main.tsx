@@ -1,6 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import { ConfigProvider, App as AntdApp } from "antd";
+import App from "./App.jsx";
+import { PRIMARY_COLOR } from "./config/constants/index.js";
 import "./custom.scss";
 import "./index.css";
 import setUpInterceptors from "./config/services/http.service.js";
@@ -9,6 +11,17 @@ setUpInterceptors();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: PRIMARY_COLOR || "#1677FF",
+        },
+      }}
+      componentSize="middle"
+    >
+      <AntdApp>
+        <App />
+      </AntdApp>
+    </ConfigProvider>
   </StrictMode>
 );
