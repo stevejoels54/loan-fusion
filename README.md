@@ -87,7 +87,7 @@ cd backend
 npm install
 
 # Navigate to frontend folder
-cd ../frontend
+cd frontend
 npm install
 ```
 
@@ -166,7 +166,7 @@ npm run build
 ### Frontend Build:
 
 ```bash
-cd ../frontend
+cd frontend
 npm run build
 ```
 
