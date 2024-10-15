@@ -140,7 +140,7 @@ The backend will be running at [http://localhost:3000](http://localhost:3000).
 1. Navigate to the **frontend** directory:
 
    ```bash
-   cd ../frontend
+   cd frontend
    ```
 
 2. Start the frontend development server:
