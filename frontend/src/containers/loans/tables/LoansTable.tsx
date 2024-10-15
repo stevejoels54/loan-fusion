@@ -7,6 +7,7 @@ import TableButtonActions from "../../../components/common/TableButtonActions";
 import TableTitle from "../../../components/common/TableTitle";
 import { useLoansStore } from "../../../config/stores";
 import { Loan, LoanList } from "../../../types";
+import { customers } from "../../../config/constants";
 
 const LoansTable = () => {
   const [filterTable, setFilterTable] = useState<Record<string, any>[] | null>(
@@ -37,14 +38,21 @@ const LoansTable = () => {
 
   const columns = [
     {
-      title: "PURPOSE",
-      key: "loanPurpose",
+      title: "CUSTOMER",
+      key: "customerId",
       render: (record: Loan) => {
         return (
           <div>
-            <span className="d-md-none">PURPOSE: </span>
-            {record?.loanPurpose} <br />
+            <span className="d-md-none">CUSTOMER: </span>
+            {customers.map((customer) => {
+              if (customer.customerId === record.customerId) {
+                return customer.name;
+              }
+            })}
+            <br />
             <div className="d-md-none">
+              <span className="d-md-none">PURPOSE: </span>
+              {record?.loanPurpose} <br />
               <span className="d-md-none">AMOUNT: </span>
               UGX {formatNumber(record?.loanAmount)} <br />
               <span className="d-md-none">REPAYMENT: </span>
@@ -80,6 +88,14 @@ const LoansTable = () => {
             </div>
           </div>
         );
+      },
+    },
+    {
+      title: "PURPOSE",
+      key: "loanPurpose",
+      responsive: ["md" as const],
+      render: (record: Loan) => {
+        return record?.loanPurpose;
       },
     },
     {
@@ -156,6 +172,7 @@ const LoansTable = () => {
         dataSource={
           filterTable === null ? loansStore.loans : (filterTable as LoanList)
         }
+        bordered
         loading={loansStore.loansLoading}
         rowKey="loanId"
         pagination={{

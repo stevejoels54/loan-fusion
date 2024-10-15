@@ -18,7 +18,7 @@ const Loans = () => {
 
   return (
     <div>
-      <h1>Loans</h1>
+      <h2>Loans</h2>
       <LoansTable />
       <AddLoanForm />
       <UpdateLoanForm />
