@@ -15,6 +15,7 @@ const LoanDetails = () => {
       title="LOAN DETAILS"
       open={loansStore.loanDetailsModalOpen}
       closeModal={() => loansStore.setLoanDetailsModalOpen(false)}
+      loading={loansStore.loanLoading}
     >
       <div className="mt-2 px-1 w-sm-100 h-500 overflow-auto">
         <table className="table table-borderless table-hover">
