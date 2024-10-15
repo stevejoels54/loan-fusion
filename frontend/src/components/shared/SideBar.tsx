@@ -1,18 +1,18 @@
 import { Layout } from "antd";
 import AppMenu from "./AppMenu";
-import { useState } from "react";
+import { useAppStore } from "../../config/stores";
 
 const { Sider } = Layout;
 
 const SideBar = () => {
-  const [sideBarCollapsed, setSideBarCollapsed] = useState(false);
+  const appStore = useAppStore();
 
   return (
     <div>
       <Sider
         collapsible
-        collapsed={sideBarCollapsed}
-        onCollapse={(collapsed) => setSideBarCollapsed(collapsed)}
+        collapsed={appStore.sideBarCollapsed}
+        onCollapse={(collapsed) => appStore.setSideBarCollapsed(collapsed)}
         width={200}
         style={{
           position: "absolute",

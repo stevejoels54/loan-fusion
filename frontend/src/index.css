@@ -32,10 +32,6 @@ body {
   cursor: pointer;
 }
 
-.content-layout {
-  margin-left: 200px;
-}
-
 @media screen and (max-width: 768px) {
   .content-layout {
     margin-left: 0;

@@ -39,7 +39,7 @@ const store = (set: (fn: (state: typeof initialState) => void) => void) => ({
       })
     );
   },
-  setSideBarCollapsed: (collapsed: unknown) => {
+  setSideBarCollapsed: (collapsed: boolean) => {
     set(
       produce((state) => {
         state.sideBarCollapsed = collapsed;

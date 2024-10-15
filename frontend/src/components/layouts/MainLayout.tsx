@@ -3,14 +3,29 @@ import { Layout, Col, Row } from "antd";
 import NavBar from "../shared/NavBar";
 import AppDrawer from "../shared/AppDrawer";
 import SideBar from "../shared/SideBar";
+import { useAppStore } from "../../config/stores";
+import styled from "styled-components";
 
 interface MainLayoutProps {
   children: React.ReactNode;
 }
 
+const ResponsiveLayout = styled(Layout)`
+  margin-left: ${(props) => (props.theme.sideBarCollapsed ? "80px" : "200px")};
+  height: 100%;
+  overflow-y: scroll;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
+`;
+
 const MainLayout: React.FC<MainLayoutProps> = ({
   children,
 }: MainLayoutProps) => {
+  const appStore = useAppStore();
+
   return (
     <Row
       style={{
@@ -34,7 +49,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({
               }}
             >
               <SideBar />
-              <Layout className="p-2 content-layout">{children}</Layout>
+              <ResponsiveLayout
+                className="p-2"
+                theme={{ sideBarCollapsed: appStore.sideBarCollapsed }}
+              >
+                {children}
+              </ResponsiveLayout>
             </Layout>
           </Layout>
         </>
