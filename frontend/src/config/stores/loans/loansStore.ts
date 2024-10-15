@@ -4,6 +4,7 @@ import { devtools } from "zustand/middleware";
 import { produce } from "immer";
 import { Loan, LoanUpdate, LoanList, ErrorResponse } from "../../../types";
 import axios from "axios";
+import { notification } from "antd";
 
 const initialState = {
   loans: [] as LoanList,
@@ -89,6 +90,13 @@ const store = (
           state.loanLoading = false;
         })
       );
+
+      // success notification
+      notification.success({
+        type: "success",
+        message: "Success",
+        description: "Loan fetched successfully",
+      });
     } catch (error) {
       set(
         produce((state) => {
@@ -96,6 +104,13 @@ const store = (
           state.loanLoading = false;
         })
       );
+
+      // error notification
+      notification.error({
+        type: "error",
+        message: "Error",
+        description: "Error fetching loan",
+      });
     }
   },
 
@@ -119,6 +134,13 @@ const store = (
           state.loans[loanIndex] = { ...state.loans[loanIndex], ...data };
         })
       );
+
+      // notification success
+      notification.success({
+        type: "success",
+        message: "Success",
+        description: "Loan updated successfully",
+      });
     } catch (error) {
       set(
         produce((state) => {
@@ -126,6 +148,13 @@ const store = (
           state.updatingLoan = false;
         })
       );
+
+      // notification error
+      notification.error({
+        type: "error",
+        message: "Error",
+        description: "Error updating loan",
+      });
     }
   },
 
@@ -147,6 +176,13 @@ const store = (
           );
         })
       );
+
+      // notification success
+      notification.success({
+        type: "success",
+        message: "Success",
+        description: "Loan deleted successfully",
+      });
     } catch (error) {
       set(
         produce((state) => {
@@ -154,6 +190,13 @@ const store = (
           state.deletingLoan = false;
         })
       );
+
+      // notification error
+      notification.error({
+        type: "error",
+        message: "Error",
+        description: "Error deleting loan",
+      });
     }
   },
 
@@ -182,6 +225,13 @@ const store = (
 
       // refresh loans
       await get().getLoans();
+
+      // notification success
+      notification.success({
+        type: "success",
+        message: "Success",
+        description: "Loan created successfully",
+      });
     } catch (error) {
       set(
         produce((state) => {
@@ -189,6 +239,13 @@ const store = (
           state.creatingLoan = false;
         })
       );
+
+      // notification error
+      notification.error({
+        type: "error",
+        message: "Error",
+        description: "Error creating loan",
+      });
     }
   },
 

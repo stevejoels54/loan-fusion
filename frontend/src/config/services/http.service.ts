@@ -2,7 +2,6 @@ import axios from "axios";
 import { isEmpty } from "lodash";
 import { useAppStore } from "../stores";
 import { API_BASE_URL } from "../constants";
-import { notification } from "antd";
 
 const setUpInterceptors = () => {
   axios.interceptors.request.use(
@@ -37,14 +36,6 @@ const setUpInterceptors = () => {
       if (config && config.method !== "get") {
         if (data) {
           useAppStore.getState().setServerSuccess(data);
-        }
-
-        // Display success message
-        if (data && data.server && data.server.message) {
-          notification.success({
-            message: "Success",
-            description: data.server.message,
-          });
         }
       }
       // Return entire response if response type blob
@@ -83,14 +74,6 @@ const setUpInterceptors = () => {
             },
           },
         };
-      }
-
-      //   Display error message
-      if (response && response.data && response.data.server) {
-        notification.error({
-          message: "Error",
-          description: response.data.server.message,
-        });
       }
 
       useAppStore.getState().setServerError(response.data);
