@@ -58,7 +58,7 @@ const store = (
       })
     );
     try {
-      const response = await axios.get("/");
+      const response = await axios.get("");
       set(
         produce((state) => {
           state.loans = response;
@@ -208,7 +208,7 @@ const store = (
       })
     );
     try {
-      const response = await axios.post(`/`, data);
+      const response = await axios.post(``, data);
       set(
         produce((state) => {
           state.createLoanSuccess = response;
